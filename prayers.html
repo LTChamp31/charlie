@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prayers - The Kirk Tribute Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Prayers Page Styles */
+        .prayers-container {
+            max-width: 900px;
+            margin: 55px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .prayer-form {
+            background: #fff;
+            padding: 32px 28px;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(44,44,84,0.12);
+            margin-bottom: 50px;
+        }
+
+        .prayer-form h3 {
+            color: #40407a;
+            font-weight: 700;
+            margin-bottom: 18px;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .prayer-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c2c54;
+        }
+
+        .prayer-form input[type="text"],
+        .prayer-form textarea {
+            width: 100%;
+            padding: 11px 14px;
+            margin-bottom: 20px;
+            border: 1.8px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .prayer-form textarea {
+            min-height: 108px;
+        }
+
+        .prayer-form button {
+            background: #40407a;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .prayer-form button:hover {
+            background: #2c2c54;
+        }
+
+        .prayers-list h3 {
+            font-weight: 700;
+            color: #40407a;
+            margin-bottom: 25px;
+            font-size: 24px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #2c2c54;
+            padding-bottom: 8px;
+        }
+
+        .prayer-entry {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(44,44,84,0.08);
+            padding: 22px 25px;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+
+        .prayer-entry .author {
+            font-weight: 600;
+            color: #40407a;
+            margin-top: 12px;
+            text-align: right;
+            font-size: 14px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <h1 class="logo"><a href="index.html">The Kirk Tribute Hub</a></h1>
+            <nav>
+                <a href="index.html">Home</a> |
+                <a href="bio.html">Biography</a> |
+                <a href="timeline.html">Timeline</a>
+                <a href="prayers.php">Prayers</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="donate.html">Donate</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero small-hero">
+        <h2>Share Your Prayers and Thoughts</h2>
+        <p>This space is for offering prayers, memories, and reflections for Charlie Kirk.</p>
+        <h2>Currently, this page is just a prototype. After submitting your message it will not show to others and delete when you refresh.</h2>
+        <h2>Soon it will work</h2>
+    </section>
+
+    <main class="prayers-container">
+        <form class="prayer-form" id="prayerForm" onsubmit="return submitPrayer(event)">
+            <h3>Submit a Prayer or Memory</h3>
+            <label for="prayerText">Your Prayer or Memory</label>
+            <textarea id="prayerText" name="prayerText" required placeholder="Write something to honor Charlie..."></textarea>
+
+            <label for="prayerAuthor">Your Name (optional)</label>
+            <input type="text" id="prayerAuthor" name="prayerAuthor" placeholder="Your name or anonymous">
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <section class="prayers-list" id="prayersList">
+            <h3>Messages of Prayer and Support</h3>
+            
+            <!-- Placeholder sample prayers -->
+            <div class="prayer-entry">
+                "My heart is with Charlie Kirk’s family, and with the United States,"
+                <div class="author">— Arnold Schwarzenegger.</div>
+            </div>
+            <div class="prayer-entry">
+                "RIP Charlie Kirk. Please remember, no matter what your political beliefs, that this man had a wife and 2 beautiful children who no longer have him. Please pray for this madness to stop."
+                <div class="author">— Josh Duhamel</div>
+            </div>
+
+            <!-- More prayers will appear here dynamically -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 The Kirk Tribute Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // For demonstration, this function just adds prayers locally without backend
+        function submitPrayer(event) {
+            event.preventDefault();
+            const text = document.getElementById('prayerText').value.trim();
+            const author = document.getElementById('prayerAuthor').value.trim() || 'Anonymous';
+
+            if (text.length === 0) return;
+
+            const prayersList = document.getElementById('prayersList');
+            const newPrayer = document.createElement('div');
+            newPrayer.className = 'prayer-entry';
+            newPrayer.innerHTML = `"${text}"<div class="author">— ${author}</div>`;
+
+            prayersList.appendChild(newPrayer);
+
+            document.getElementById('prayerForm').reset();
+            return false;
+        }
+    </script>
+</body>
+</html>
